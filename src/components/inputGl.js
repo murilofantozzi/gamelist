@@ -14,13 +14,14 @@ export default function InputGl(props) {
 
 const styles = StyleSheet.create({
     input: {
-        marginLeft: "5%",
-        width: "90%",
+        marginLeft: 10,
+        width: 350,
+        height: 50,
         fontSize: 26,
         alignContent: "center",
-        backgroundColor: '#858597',
         borderRadius: 10,
-        height: "20%",
+        backgroundColor: '#858597',
+        padding: 5,
     },
 
 
