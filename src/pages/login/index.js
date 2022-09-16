@@ -1,21 +1,29 @@
 
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import InputGl from "../../components/inputGl";
 
+
 export default function Login() {
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title} >Entre no app</Text>
+            <Image source={require('../../assets/logo.png')}
+                style={{ width: '100%' }}
+                resizeMode="contain"
+            />
+            <Text style={styles.title} >GameList</Text>
             <View style={styles.txtinputs}>
                 <Text style={styles.texto}>Email</Text>
+
                 <InputGl plc='E-mail' />
                 <Text style={styles.texto}>Senha</Text>
+
                 <InputGl plc='Senha' />
                 <Text style={styles.texto}>Esqueceu a senha?</Text>
+
                 <View style={styles.buttonCont}>
-                    <TouchableOpacity style={styles.button}><Text style={styles.texto}>
-                        Entrar
+                    <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Entrar
                     </Text></TouchableOpacity>
                 </View>
                 <Text style={styles.texto}>Não possui uma conta? Cadastre-se aqui</Text>
@@ -33,9 +41,9 @@ const styles = StyleSheet.create({
         marginTop: "3%"
     },
     txtinputs: {
-        fontSize: 10,
         alignContent: "center",
-        backgroundColor: '#3E3E55',
+        backgroundColor: '#2F2F42',
+        height: "100%",
         color: "white",
     },
     container: {
@@ -50,15 +58,19 @@ const styles = StyleSheet.create({
         marginLeft: "5%"
     },
     button: {
-        backgroundColor: "blue",
-        width: 150,
-        height: 50,
-        marginLeft: "30%",
+        backgroundColor: "#3D5CFF",
+        width: 250,
+        height: 40,
         alignItems: "center",
         marginTop: 10,
         borderRadius: 10,
-        padding: 5,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "center"
     },
+    buttonText: {
+        color: "#FFF",
+    }
 
 
 

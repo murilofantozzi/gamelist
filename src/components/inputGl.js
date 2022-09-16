@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
     input: {
         marginLeft: 10,
         width: 350,
-        height: 50,
-        fontSize: 26,
+        height: 40,
+        fontSize: 16,
         alignContent: "center",
         borderRadius: 10,
-        backgroundColor: '#858597',
-        padding: 5,
+        backgroundColor: '#3E3E55',
+        padding: 5,     
     },
 
 
