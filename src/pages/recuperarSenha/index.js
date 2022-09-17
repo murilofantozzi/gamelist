@@ -5,7 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
 
-export default function Cadastro() {
+export default function RecuperarSenha() {
 
     const navigation = useNavigation();
 
@@ -17,7 +17,7 @@ export default function Cadastro() {
         <View style={styles.container}>
             <TouchableOpacity onPress={goBack}>
             <Icon name="arrowleft" size={32} color="#fff" />
-            <Text style={styles.title}>Cadastro</Text>
+            <Text style={styles.title}>Recuperar senha</Text>
             </TouchableOpacity>
 
         </View>

@@ -2,9 +2,21 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import InputGl from "../../components/inputGl";
+import { useNavigation } from "@react-navigation/native";
+
 
 
 export default function Login() {
+
+    const navigation = useNavigation();
+
+    function RecuperarSenha() {
+        navigation.navigate("RecuperarSenha");
+    }
+
+    function Cadastro() {
+        navigation.navigate("Cadastro");
+    }
 
     return (
         <View style={styles.container}>
@@ -20,13 +32,16 @@ export default function Login() {
                 <Text style={styles.texto}>Senha</Text>
 
                 <InputGl plc='Senha' />
-                <Text style={styles.texto}>Esqueceu a senha?</Text>
+                <TouchableOpacity onPress={RecuperarSenha}><Text style={styles.textoDir}>Esqueceu a senha?</Text></TouchableOpacity>
 
-                <View style={styles.buttonCont}>
+                <View>
                     <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Entrar
                     </Text></TouchableOpacity>
                 </View>
-                <Text style={styles.texto}>Não possui uma conta? Cadastre-se aqui</Text>
+                <View>
+                    <Text style={styles.textoDir}>
+                        <TouchableOpacity onPress={Cadastro}><Text style={styles.buttonCont}>Não possui uma conta? Cadastre-se aqui</Text></TouchableOpacity></Text>
+                </View>
             </View>
         </View>
     );
@@ -54,24 +69,36 @@ const styles = StyleSheet.create({
     },
     texto: {
         color: "white",
-        marginTop: "5%",
-        marginLeft: "5%"
+        marginTop: 15,
+        marginLeft: 15,
+    },
+
+    textoDir: {
+        color: "white",
+        marginTop: 10,
+        marginLeft: 10,
+        textAlign: 'right',
+        marginRight: 40,
+
     },
     button: {
         backgroundColor: "#3D5CFF",
         width: 250,
         height: 40,
-        alignItems: "center",
         marginTop: 10,
         borderRadius: 10,
-        alignSelf: "center",
         alignItems: "center",
+        alignSelf: "center",
         justifyContent: "center"
     },
     buttonText: {
         color: "#FFF",
-    }
+    },
 
+    buttonCont: {
+        color: '#3D5CFF',
+        marginTop: 10,
+    },
 
 
 });
