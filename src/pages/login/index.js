@@ -18,13 +18,17 @@ export default function Login() {
         navigation.navigate("Cadastro");
     }
 
+    function Jogos() {
+        navigation.navigate("Jogos");
+    }
     return (
         <View style={styles.container}>
             <Image source={require('../../assets/logo.png')}
-                style={{ width: '100%' }}
+                style={{ width: '100%', marginTop: 50 }}
                 resizeMode="contain"
             />
             <Text style={styles.title} >GameList</Text>
+           
             <View style={styles.txtinputs}>
                 <Text style={styles.texto}>Email</Text>
 
@@ -32,15 +36,23 @@ export default function Login() {
                 <Text style={styles.texto}>Senha</Text>
 
                 <InputGl plc='Senha' />
-                <TouchableOpacity onPress={RecuperarSenha}><Text style={styles.textoDir}>Esqueceu a senha?</Text></TouchableOpacity>
+                <TouchableOpacity onPress={RecuperarSenha}><Text style={styles.textoDir}>
+                    Esqueceu a senha?
+                </Text>
+                </TouchableOpacity>
 
                 <View>
-                    <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Entrar
+                    <TouchableOpacity  onPress={Jogos} style={styles.button}><Text style={styles.buttonText}>Entrar
                     </Text></TouchableOpacity>
                 </View>
+
                 <View>
                     <Text style={styles.textoDir}>
-                        <TouchableOpacity onPress={Cadastro}><Text style={styles.buttonCont}>Não possui uma conta? Cadastre-se aqui</Text></TouchableOpacity></Text>
+                        <TouchableOpacity onPress={Cadastro}><Text style={styles.buttonCont}>
+                            Não possui uma conta? Cadastre-se aqui</Text>
+                        </TouchableOpacity>
+
+                    </Text>
                 </View>
             </View>
         </View>
@@ -53,7 +65,7 @@ const styles = StyleSheet.create({
         color: "white",
         textAlign: 'center',
         marginBottom: "5%",
-        marginTop: "3%"
+        marginTop: "5%",
     },
     txtinputs: {
         alignContent: "center",
