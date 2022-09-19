@@ -5,6 +5,7 @@ import Login from '../pages/login'
 import Cadastro from '../pages/cadastro'
 import Jogos from '../pages/jogos'
 import Recuperar from '../pages/recuperarSenha'
+import Termos from '../pages/termos'
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -13,8 +14,9 @@ export default function Rotas() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-            <Stack.Screen name="Cadastro" component={Cadastro} options={{ headerShown: false }} />
             <Stack.Screen name="RecuperarSenha" component={Recuperar} options={{ headerShown: false }} />
+            <Stack.Screen name="Cadastro" component={Cadastro} options={{ headerShown: false }} />
+            <Stack.Screen name="Termos" component={Termos} options={{ headerShown: false }} />
             <Stack.Screen name="Jogos" component={RotasTab} options={{ headerShown: false }} />
         </Stack.Navigator>
 

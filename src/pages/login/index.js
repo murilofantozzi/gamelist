@@ -1,10 +1,8 @@
 
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import InputGl from "../../components/inputGl";
 import { useNavigation } from "@react-navigation/native";
-
-
 
 export default function Login() {
 
@@ -22,27 +20,27 @@ export default function Login() {
         navigation.navigate("Jogos");
     }
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView behavior="position" style={styles.container}>
             <Image source={require('../../assets/logo.png')}
                 style={{ width: '100%', marginTop: 50 }}
                 resizeMode="contain"
             />
             <Text style={styles.title} >GameList</Text>
-           
+
             <View style={styles.txtinputs}>
                 <Text style={styles.texto}>Email</Text>
 
                 <InputGl plc='E-mail' />
                 <Text style={styles.texto}>Senha</Text>
 
-                <InputGl plc='Senha' />
+                <InputGl plc='Senha' style={{}} />
                 <TouchableOpacity onPress={RecuperarSenha}><Text style={styles.textoDir}>
                     Esqueceu a senha?
                 </Text>
                 </TouchableOpacity>
 
                 <View>
-                    <TouchableOpacity  onPress={Jogos} style={styles.button}><Text style={styles.buttonText}>Entrar
+                    <TouchableOpacity onPress={Jogos} style={styles.button}><Text style={styles.buttonText}>Entrar
                     </Text></TouchableOpacity>
                 </View>
 
@@ -55,7 +53,8 @@ export default function Login() {
                     </Text>
                 </View>
             </View>
-        </View>
+
+        </KeyboardAvoidingView >
     );
 }
 
@@ -77,6 +76,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#1F1F39',
         width: "100%",
         height: "100%",
+        flex: 1,
 
     },
     texto: {
@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     textoDir: {
         color: "white",
         marginTop: 10,
-        marginLeft: 10,
         textAlign: 'right',
         marginRight: 40,
 
