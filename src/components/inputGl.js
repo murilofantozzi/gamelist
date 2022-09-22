@@ -1,7 +1,6 @@
 
 import React from "react";
 import { TextInput, StyleSheet } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 export default function InputGl(props) {
@@ -21,6 +20,8 @@ const styles = StyleSheet.create({
         alignContent: "center",
         borderRadius: 10,
         backgroundColor: '#3E3E55',
+        placeholderTextColor: '#fff',
+        color: '#fff',
         padding: 5,
     },
 

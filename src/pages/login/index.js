@@ -44,14 +44,13 @@ export default function Login() {
                     </Text></TouchableOpacity>
                 </View>
 
-                <View>
-                    <Text style={styles.textoDir}>
-                        <TouchableOpacity onPress={Cadastro}><Text style={styles.buttonCont}>
-                            Não possui uma conta? Cadastre-se aqui</Text>
-                        </TouchableOpacity>
+                <View style={styles.check}>
+                    <Text style={{ color: '#fff' }}>Não possui uma conta?</Text>
 
-                    </Text>
+                    <Text onPress={() => navigation.navigate("Cadastro")}
+                        style={{ color: '#3D5CFF', textAlign: 'center' }}> Cadastre-se aqui</Text>
                 </View>
+            
             </View>
 
         </KeyboardAvoidingView >
@@ -110,6 +109,13 @@ const styles = StyleSheet.create({
         color: '#3D5CFF',
         marginTop: 10,
     },
+
+    check: {
+        flexDirection: 'row',
+        justifyContent: "center",
+        marginTop: 10,
+        marginLeft: 60,
+    }
 
 
 });

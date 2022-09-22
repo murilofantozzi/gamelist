@@ -2,7 +2,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
-import InputGl from "../../components/inputGl";
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -11,7 +10,7 @@ export default function Termos() {
     const navigation = useNavigation();
 
     function goBack() {
-        navigation.navigate("Login");
+        navigation.navigate("Cadastro");
     }
 
     return (
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
         height: "100%",
     },
     texto: {
-        fontSize: 20,
+        fontSize: 14,
         color: "white",
         marginTop: 15,
         marginHorizontal: 15,
