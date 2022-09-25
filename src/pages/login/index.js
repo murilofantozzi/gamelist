@@ -2,7 +2,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import InputGl from "../../components/inputGl";
+import InputPsw from "../../components/inputPsw";
 import { useNavigation } from "@react-navigation/native";
+
 
 export default function Login() {
 
@@ -10,7 +12,7 @@ export default function Login() {
 
     function RecuperarSenha() {
         navigation.navigate("RecuperarSenha");
-    }
+    }r
 
     function Cadastro() {
         navigation.navigate("Cadastro");
@@ -31,9 +33,11 @@ export default function Login() {
                 <Text style={styles.texto}>Email</Text>
 
                 <InputGl plc='E-mail' />
+
                 <Text style={styles.texto}>Senha</Text>
 
-                <InputGl plc='Senha' style={{}} />
+                <InputPsw plc='Senha' />
+
                 <TouchableOpacity onPress={RecuperarSenha}><Text style={styles.textoDir}>
                     Esqueceu a senha?
                 </Text>
@@ -50,7 +54,7 @@ export default function Login() {
                     <Text onPress={() => navigation.navigate("Cadastro")}
                         style={{ color: '#3D5CFF', textAlign: 'center' }}> Cadastre-se aqui</Text>
                 </View>
-            
+
             </View>
 
         </KeyboardAvoidingView >
@@ -89,6 +93,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         textAlign: 'right',
         marginRight: 40,
+
 
     },
     button: {

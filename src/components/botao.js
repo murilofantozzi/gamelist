@@ -7,11 +7,12 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 export default function Botao(props) {
     return (
         <View>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>
-        {props.disc}
-        </Text>
-        </TouchableOpacity>
-    </View>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>
+                    {props.disc}
+                </Text>
+            </TouchableOpacity>
+        </View>
     );
 }
 

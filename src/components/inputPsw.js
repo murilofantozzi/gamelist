@@ -1,14 +1,16 @@
 
 import React from "react";
 import { TextInput, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 
-export default function InputGl(props) {
+
+export default function InputPsw(props) {
     return (
         <TextInput style={styles.input}
             placeholder={props.plc}
             placeholderTextColor="white"
-            secureTextEntry={props.src}
+            secureTextEntry={true}
         ></TextInput>
     );
 }

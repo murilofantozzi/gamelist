@@ -30,7 +30,7 @@ export default function Cadastro() {
                 <InputGl plc="Senha" />
                 <Text style={styles.texto}>Descrição</Text>
                 <InputGl plc="Descrição" />
-                <BotaoAzul disc="Criar Conta" />
+                <BotaoAzul disc="Criar Conta" secureTextEntry={true} />
 
                 <View style={{ color: '#fff', marginLeft: 10 }}>
                 </View>
