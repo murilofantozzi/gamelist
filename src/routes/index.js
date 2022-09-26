@@ -6,6 +6,9 @@ import Cadastro from '../pages/cadastro'
 import Jogos from '../pages/jogos'
 import Recuperar from '../pages/recuperarSenha'
 import Termos from '../pages/termos'
+import CadastroJogos from '../pages/cadJogos';
+import Notificacao from '../pages/notifcacao';
+import Conta from '../pages/conta';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -27,6 +30,10 @@ function RotasTab() {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Jogos" component={Jogos} options={{ headerShown: false }} />
+            <Tab.Screen name="CadastroJogos" component={CadastroJogos} options={{ headerShown: false }} />
+            <Tab.Screen name="Notificacao" component={Notificacao} options={{ headerShown: false }} />
+            <Tab.Screen name="Conta" component={Conta} options={{ headerShown: false }} />
+
         </Tab.Navigator>
 
     );

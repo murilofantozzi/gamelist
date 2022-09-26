@@ -12,7 +12,7 @@ export default function Login() {
 
     function RecuperarSenha() {
         navigation.navigate("RecuperarSenha");
-    }r
+    }
 
     function Cadastro() {
         navigation.navigate("Cadastro");

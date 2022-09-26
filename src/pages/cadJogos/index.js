@@ -9,7 +9,7 @@ import BotaoAzul from "../../components/botao"
 import Checkbox from 'expo-checkbox';
 import ArrowHome from '../../components/arrowHome';
 
-export default function Cadastro() {
+export default function CadastroJogos() {
 
     const [isChecked, setChecked] = useState(false);
     const navigation = useNavigation();
@@ -24,7 +24,7 @@ export default function Cadastro() {
 
             <ArrowHome />
 
-            <Text style={styles.title}>Cadastre-se</Text>
+            <Text style={styles.title}>CadastroJogos</Text>
             <Text style={{ color: "#fff", margin: 20 }}> Insira seus dados corretamente para entrar na sua estante de jogos!</Text>
             <ScrollView style={styles.txtinputs}>
                 <Text style={styles.texto}>Nick</Text>
