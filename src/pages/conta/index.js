@@ -24,34 +24,22 @@ export default function Conta() {
 
             <ArrowHome />
 
-            <Text style={styles.title}>Conta</Text>
-            <Text style={{ color: "#fff", margin: 20 }}> Insira seus dados corretamente para entrar na sua estante de jogos!</Text>
+            <Text style={styles.title}>Minha conta</Text>
+            
             <ScrollView style={styles.txtinputs}>
                 <Text style={styles.texto}>Nick</Text>
                 <InputGl plc="Nick" />
-                <Text style={styles.texto}>Email</Text>
-                <InputGl plc="Email" />
-                <Text style={styles.texto}>Senha</Text>
-                <InputGl plc="Senha" />
                 <Text style={styles.texto}>Descrição</Text>
                 <InputGl plc="Descrição" />
+                <Text style={styles.texto}>Email</Text>
+                <InputGl plc="Email" />
+                <Text style={styles.texto}>Senha Atual</Text>
+                <InputGl plc="********" />
+                <Text style={styles.texto}>Alterar senha</Text>
+                <InputGl plc="********" />
 
-                <BotaoAzul disc="Criar Conta" secureTextEntry={true} onPress={() => navigation.navigate("Login")} />
+                <BotaoAzul disc="Salvar" secureTextEntry={true} onPress={() => navigation.navigate("Login")} />
              
-
-                <View style={styles.check}>
-                    <Checkbox style={{ marginTop: 8 }} value={isChecked} onValueChange={setChecked} />
-                    <Text style={{ color: '#fff', marginLeft: 10, marginTop: 10 }}>
-                        Ao criar uma nova conta, você tem que ler e
-                    </Text>
-                </View>
-                <View style={styles.check}>
-                    <Text style={{ color: '#fff' }}>concordar com os nossos.</Text>
-
-                    <Text onPress={() => navigation.navigate("Termos")}
-                        style={{ color: '#3D5CFF', textAlign: 'center' }}>Termos e condições.</Text>
-                </View>
-
 
             </ScrollView>
         </KeyboardAvoidingView>

@@ -3,11 +3,26 @@ import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import InputGl from "../../components/inputGl";
+import Card from "../../components/card";
 
 export default function Jogos() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title} >Jogos</Text>
+            <Text style={styles.title} >Estante de Jogos</Text>
+            <InputGl plc={"Procure seu jogo"}>
+            </InputGl>
+            <Text style={styles.title}>Jogos cadastrados:</Text>
+            <View style={styles.carrosel}>
+                <TouchableOpacity><Text style={styles.itemcarrossel}>Todos</Text></TouchableOpacity>
+                <TouchableOpacity><Text style={styles.itemcarrossel}>Populares</Text></TouchableOpacity>
+                <TouchableOpacity><Text style={styles.itemcarrossel}>Novos</Text></TouchableOpacity>
+            </View>
+            <View>
+                <Card />
+                <Card />
+                <Card />
+            </View>
+
 
         </View>
     );
@@ -27,4 +42,17 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
     },
+
+    carrosel: {
+        flexDirection: 'row',
+        marginBottom: 20,
+    },
+    itemcarrossel: {
+        backgroundColor: '#858597',
+        borderRadius: 10,
+        marginLeft: 10,
+        padding: 3,
+    }
+
+
 });
