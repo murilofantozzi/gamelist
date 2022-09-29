@@ -21,25 +21,25 @@ export default function CadastroJogos() {
 
     return (
 
-        <KeyboardAvoidingView behavior="position" style={styles.container}>
+        <KeyboardAvoidingView  style={styles.container}>
 
             <ArrowHome />
 
-            <Text style={styles.title}>CadastroJogos</Text>
+            <Text style={styles.title}>Cadastro Descrição Jogos</Text>
             <ScrollView style={styles.txtinputs}>
 
                 <Text style={styles.texto}>Nome do Game:</Text>
-                <InputGame />
+                <InputGl />
                 <Text style={styles.texto}>Data da Aquisição:</Text>
-                <InputGame plc="_ / _ / _ /" />
+                <InputGl plc="_ / _ / _ /" />
                 <Text style={styles.texto}>Valor:</Text>
-                <InputGame plc="R$0,00" />
+                <InputGl plc="R$0,00" />
                 <Text style={styles.texto}>Gênero:</Text>
-                <InputGame plc="Descrição" />
+                <InputGl plc="Descrição" />
                 <Text style={styles.texto}>Distribuidora::</Text>
-                <InputGame plc="Descrição" />
+                <InputGl plc="Descrição" />
                 <Text style={styles.texto}>Duração do Game::</Text>
-                <InputGame plc="0h0min" />
+                <InputGl plc="0h0min" />
 
                 <BotaoAzul disc="Criar Conta" secureTextEntry={true} onPress={() => navigation.navigate("Login")} />
 

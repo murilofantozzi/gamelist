@@ -42,20 +42,23 @@ function RotasTab() {
                     <MaterialCommunityIcons name="home" color={color} size={size} />
                 ),
             }} />
-            <Tab.Screen name="CadastroJogos" component={CadastroJogos} options={{ headerShown: false,
-             tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="book" color={color} size={size} />
-            ),
-             }} />
-            <Tab.Screen name="Notificacao" component={Notificacao} options={{ headerShown: false,
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="message-processing" color={color} size={size} />
-            ),
+            <Tab.Screen name="Cadastro " component={CadastroJogos} options={{
+                headerShown: false,
+                tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="book" color={color} size={size} />
+                ),
             }} />
-            <Tab.Screen name="Conta" component={Conta} options={{ headerShown: false,
-              tabBarIcon: ({ color, size }) => (
-                <MaterialCommunityIcons name="account" color={color} size={size} />
-            ),
+            <Tab.Screen name="Notificacao" component={Notificacao} options={{
+                headerShown: false,
+                tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="message-processing" color={color} size={size} />
+                ),
+            }} />
+            <Tab.Screen name="Conta" component={Conta} options={{
+                headerShown: false,
+                tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="account" color={color} size={size} />
+                ),
             }} />
         </Tab.Navigator >
 

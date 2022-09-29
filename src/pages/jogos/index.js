@@ -13,7 +13,7 @@ export default function Jogos() {
             </InputGl>
             <Text style={styles.title}>Jogos cadastrados:</Text>
             <View style={styles.carrosel}>
-                <TouchableOpacity><Text style={styles.itemcarrossel}>Todos</Text></TouchableOpacity>
+                <TouchableOpacity><Text style={styles.itemcarrossel1}>Todos</Text></TouchableOpacity>
                 <TouchableOpacity><Text style={styles.itemcarrossel}>Populares</Text></TouchableOpacity>
                 <TouchableOpacity><Text style={styles.itemcarrossel}>Novos</Text></TouchableOpacity>
             </View>
@@ -49,9 +49,18 @@ const styles = StyleSheet.create({
     },
     itemcarrossel: {
         backgroundColor: '#858597',
-        borderRadius: 10,
-        marginLeft: 10,
-        padding: 3,
+        borderRadius: 30,
+        marginLeft: 20,
+        padding: 5,
+        color: '#fff',
+    },
+
+    itemcarrossel1: {
+        backgroundColor: '#3D5CFF',
+        borderRadius: 30,
+        marginLeft: 30,
+        padding: 5,
+        color: '#fff',
     }
 
 
