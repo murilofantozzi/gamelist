@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Login from '../pages/login'
 import Cadastro from '../pages/cadastro'
@@ -28,13 +29,35 @@ export default function Rotas() {
 
 function RotasTab() {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="Jogos" component={Jogos} options={{ headerShown: false }} />
-            <Tab.Screen name="CadastroJogos" component={CadastroJogos} options={{ headerShown: false }} />
-            <Tab.Screen name="Notificacao" component={Notificacao} options={{ headerShown: false }} />
-            <Tab.Screen name="Conta" component={Conta} options={{ headerShown: false }} />
+        <Tab.Navigator
+            screenOptions={{
+                tabBarStyle: {
+                    backgroundColor: '#1F1F39',
+                },
+            }}>
 
-        </Tab.Navigator>
+            <Tab.Screen name="Jogos " component={Jogos} options={{
+                headerShown: false,
+                tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="home" color={color} size={size} />
+                ),
+            }} />
+            <Tab.Screen name="CadastroJogos" component={CadastroJogos} options={{ headerShown: false,
+             tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons name="book" color={color} size={size} />
+            ),
+             }} />
+            <Tab.Screen name="Notificacao" component={Notificacao} options={{ headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons name="message-processing" color={color} size={size} />
+            ),
+            }} />
+            <Tab.Screen name="Conta" component={Conta} options={{ headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons name="account" color={color} size={size} />
+            ),
+            }} />
+        </Tab.Navigator >
 
     );
 }
