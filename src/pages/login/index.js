@@ -5,8 +5,8 @@ import InputGl from "../../components/inputGl";
 import InputPsw from "../../components/inputPsw";
 import { useNavigation } from "@react-navigation/native";
 
-
 export default function Login() {
+
 
     const navigation = useNavigation();
 
@@ -21,6 +21,7 @@ export default function Login() {
     function Jogos() {
         navigation.navigate("Jogos");
     }
+
     return (
         <KeyboardAvoidingView behavior="position" style={styles.container}>
             <Image source={require('../../assets/logo.png')}
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#2F2F42',
         height: "100%",
         color: "white",
+        
     },
     container: {
         backgroundColor: '#1F1F39',
@@ -93,8 +95,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         textAlign: 'right',
         marginRight: 40,
-
-
     },
     button: {
         backgroundColor: "#3D5CFF",

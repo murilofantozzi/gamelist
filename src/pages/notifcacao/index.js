@@ -1,12 +1,7 @@
 
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
-import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
-import InputGl from "../../components/inputGl"
-import BotaoAzul from "../../components/botao"
-import Checkbox from 'expo-checkbox';
 import ArrowHome from '../../components/arrowHome';
 import Notif from '../../components/notif';
 
@@ -23,16 +18,17 @@ export default function Notificacao() {
 
         <KeyboardAvoidingView behavior="height" style={styles.container}>
 
-            <ArrowHome />
+            <View style={styles.container}>
+                <ArrowHome />
 
-            <Text style={styles.title}>Notificacao</Text>
-            <ScrollView>
-                <Notif />
-                <Notif />
-                <Notif />
-                <Notif />
-
-            </ScrollView>
+                <Text style={styles.title}>Notificacao</Text>
+                <ScrollView>
+                    <Notif notifica="Novidades para você: Fortinite 30% off na Steam nesse final de semana " />
+                    <Notif notifica="Novidades para você: Disney adia lançamento de starwars para PSP e ..." />
+                    <Notif notifica="Novidades para você: Fortinite 30% off na Steam nesse final de semana  " />
+                    <Notif notifica="Novidades para você: Fortinite 30% off na Steam nesse final de semana  " />
+                </ScrollView>
+            </View>
         </KeyboardAvoidingView>
     );
 }
@@ -52,6 +48,7 @@ const styles = StyleSheet.create({
         height: "100%",
         alignContent: "center",
         alignSelf: "center",
+        alignItems: 'center',
     },
 
 });

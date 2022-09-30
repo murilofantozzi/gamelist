@@ -1,27 +1,23 @@
 
-import React, { useState } from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
-import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
 import BotaoAzul from "../../components/botao"
-import Checkbox from 'expo-checkbox';
 import ArrowHome from '../../components/arrowHome';
 import InputGl from "../../components/inputGl";
-import InputGame from "../../components/inputGame";
+
 
 export default function CadastroJogos() {
 
-    const [isChecked, setChecked] = useState(false);
+
     const navigation = useNavigation();
 
-    function irHome() {
-        navigation.navigate("Login");
+    function Jogos() {
+        navigation.navigate("Jogos ");
     }
 
     return (
 
-        <KeyboardAvoidingView  style={styles.container}>
+        <KeyboardAvoidingView style={styles.container}>
 
             <ArrowHome />
 
@@ -41,7 +37,7 @@ export default function CadastroJogos() {
                 <Text style={styles.texto}>Duração do Game::</Text>
                 <InputGl plc="0h0min" />
 
-                <BotaoAzul disc="Criar Conta" secureTextEntry={true} onPress={() => navigation.navigate("Login")} />
+                <BotaoAzul disc="Cadastrar jogo" onPress={Jogos} />
 
             </ScrollView>
         </KeyboardAvoidingView>
@@ -61,13 +57,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#1F1F39',
         width: "100%",
         height: "100%",
+
     },
 
     txtinputs: {
         alignContent: "center",
         backgroundColor: '#2F2F42',
         color: "white",
-        height: "100%"
+        height: "100%",
+
+
     },
     texto: {
         color: "white",
