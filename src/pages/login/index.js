@@ -18,7 +18,7 @@ export default function Login() {
 
     async function logar() {
         await firebase.auth().signInWithEmailAndPassword(email, password).then((value) => {
-            navigation.navigate("Jogos")
+            navigation.navigate("Jogos", value.user.uid);
 
         }).catch((error) => {
             alert(error);

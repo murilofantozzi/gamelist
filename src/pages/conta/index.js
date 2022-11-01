@@ -19,21 +19,15 @@ export default function Conta() {
 
     useEffect(() => {
         async function carregaDados() {
-            await firebase.database().ref('usuarios').on('value', (snapshot) => {
-                setNome(snapshot.val().nome);
-                setEmail(snapshot.val().email);
+            await firebase.database().ref('usuarios').update({
+                
             });
         }
 
         carregaDados();
     }, []);
 
-    const [isChecked, setChecked] = useState(false);
     const navigation = useNavigation();
-
-    function irHome() {
-        navigation.navigate("Login");
-    }
 
     return (
 

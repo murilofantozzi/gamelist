@@ -1,11 +1,10 @@
 
-import { View, Text, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-import BotaoAzul from "../../components/botao"
-import ArrowHome from '../../components/arrowHome';
-import InputGl from "../../components/inputGl";
 import { useState } from 'react';
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import ArrowHome from '../../components/arrowHome';
+import BotaoAzul from "../../components/botao";
 
 
 export default function CadastroJogos() {
@@ -17,26 +16,35 @@ export default function CadastroJogos() {
     const [distribuidora, setDistribuidora] = useState('');
     const [duracao, setDuracao] = useState('');
 
-    const navigation = useNavigation();
-
-    const jogos = async () => {
-        await firebase.database().ref('jogos').set({
-            nomeJogo: nomeGame,
-            data: data,
-            valor: valor,
-            genero: genero,
-            distribuidora: distribuidora,
-            duracao: duracao,
-        });
+    const cadastrarjogos = async () => {
+        if(nomeGame !== ''){
+            let jogoRef = await firebase.database().ref('jogos');
+            let key = jogoRef.push().key;
+    
+            jogoRef.child(key).set({
+                nomeJogo: nomeGame,
+                data: data,
+                valor: valor,
+                genero: genero,
+                distribuidora: distribuidora,
+                duracao: duracao,
+            });
+            alert("Cadastrado com sucesso!");
+            setNomeGame('');
+            setData('');
+            setValor('');
+            setGenero('');
+            setDistribuidora('');
+            setDuracao('');
+            return;
+        }
+        alert("Nome obrigatório");
     }
 
     return (
-
         <KeyboardAvoidingView style={styles.container}>
-
             <ArrowHome />
-
-            <Text style={styles.title}>Cadastro Descrição Jogos</Text>
+            <Text style={styles.title}>Cadastro De Jogos</Text>
             <ScrollView style={styles.txtinputs}>
 
                 <Text style={styles.texto}>Nome do Game:</Text>
@@ -59,18 +67,18 @@ export default function CadastroJogos() {
                     style={styles.input}
                     onChangeText={(gene) => setGenero(gene)}
                     value={genero} />
-                <Text style={styles.texto}>Distribuidora::</Text>
+                <Text style={styles.texto}>Distribuidora:</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={(dist) => setDistribuidora(dist)}
                     value={distribuidora} />
-                <Text style={styles.texto}>Duração do Game::</Text>
+                <Text style={styles.texto}>Duração do Game:</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={(dur) => setDuracao(dur)}
                     value={duracao} />
 
-                <BotaoAzul disc="Cadastrar jogo" press={jogos} />
+                <BotaoAzul disc="Cadastrar jogo" press={cadastrarjogos} />
 
             </ScrollView>
         </KeyboardAvoidingView>
