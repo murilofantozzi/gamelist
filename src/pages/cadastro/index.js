@@ -1,23 +1,43 @@
 
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
-import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
-import InputGl from "../../components/inputGl"
-import BotaoAzul from "../../components/botao"
 import Checkbox from 'expo-checkbox';
+import React, { useState } from 'react';
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { TextInput } from "react-native-gesture-handler";
 import ArrowHome from '../../components/arrowHome';
+import BotaoAzul from "../../components/botao";
+import firebase from '../../firebaseConfig';
 
 export default function Cadastro() {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [descricao, setDescricao] = useState('');
     const [isChecked, setChecked] = useState(false);
+
     const navigation = useNavigation();
 
-    function irHome() {
-        navigation.navigate("Login");
+    const cadastrar = async () => {
+        if (!isChecked) {
+            alert("Aceite os termos de condições");
+            return;
+        }
+
+        await firebase.auth().createUserWithEmailAndPassword(email, password).then((value) => {
+            firebase.database().ref('usuarios').child(value.user.uid).set({
+                email: email,
+                nome: name,
+                descricao: descricao,
+                password: password,
+                termo: isChecked
+            });
+            navigation.navigate("Jogos");
+        }).catch((error) => {
+            alert("aa");
+        });
     }
-    
+
     return (
 
         <KeyboardAvoidingView behavior="height" style={styles.container}>
@@ -28,16 +48,27 @@ export default function Cadastro() {
             <Text style={{ color: "#fff", margin: 20 }}> Insira seus dados corretamente para entrar na sua estante de jogos!</Text>
             <ScrollView style={styles.txtinputs}>
                 <Text style={styles.texto}>Nick</Text>
-                <InputGl plc="Nick" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(nome) => setName(nome)}
+                    value={name} />
                 <Text style={styles.texto}>Email</Text>
-                <InputGl plc="Email" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(email) => setEmail(email)}
+                    value={email} />
                 <Text style={styles.texto}>Senha</Text>
-                <InputGl plc="Senha" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(senha) => setPassword(senha)}
+                    value={password} />
                 <Text style={styles.texto}>Descrição</Text>
-                <InputGl plc="Descrição" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(descricao) => setDescricao(descricao)}
+                    value={descricao} />
+                <BotaoAzul disc="Criar Conta" secureTextEntry={true} press={cadastrar} />
 
-                <BotaoAzul disc="Criar Conta" secureTextEntry={true} onPress={() => navigation.navigate("Login")} />
-             
 
                 <View style={styles.check}>
                     <Checkbox style={{ marginTop: 8 }} value={isChecked} onValueChange={setChecked} />
@@ -89,6 +120,27 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: "center",
-    }
-
+    },
+    input: {
+        marginLeft: 10,
+        width: 350,
+        height: 40,
+        fontSize: 16,
+        alignContent: "center",
+        borderRadius: 10,
+        backgroundColor: '#3E3E55',
+        placeholderTextColor: '#fff',
+        color: '#fff',
+        padding: 5,
+    },
+    button: {
+        backgroundColor: "#3D5CFF",
+        width: 210,
+        height: 40,
+        marginTop: 20,
+        borderRadius: 10,
+        alignItems: "center",
+        alignSelf: "center",
+        justifyContent: "center",
+    },
 });

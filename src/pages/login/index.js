@@ -1,12 +1,14 @@
 
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
-import InputGl from "../../components/inputGl";
-import InputPsw from "../../components/inputPsw";
 import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import { Image, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { TextInput } from "react-native-gesture-handler";
+import firebase from '../../firebaseConfig';
 
 export default function Login() {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const navigation = useNavigation();
 
@@ -14,12 +16,17 @@ export default function Login() {
         navigation.navigate("RecuperarSenha");
     }
 
-    function Cadastro() {
-        navigation.navigate("Cadastro");
-    }
+    async function logar() {
+        await firebase.auth().signInWithEmailAndPassword(email, password).then((value) => {
+            navigation.navigate("Jogos")
 
-    function Jogos() {
-        navigation.navigate("Jogos");
+        }).catch((error) => {
+            alert(error);
+            return;
+        });
+
+        setEmail('');
+        setPassword('');
     }
 
     return (
@@ -33,11 +40,17 @@ export default function Login() {
             <View style={styles.txtinputs}>
                 <Text style={styles.texto}>Email</Text>
 
-                <InputGl plc='E-mail' />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(email) => setEmail(email)}
+                    value={email} />
 
                 <Text style={styles.texto}>Senha</Text>
 
-                <InputPsw plc='Senha' />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(senha) => setPassword(senha)}
+                    value={password} />
 
                 <TouchableOpacity onPress={RecuperarSenha}><Text style={styles.textoDir}>
                     Esqueceu a senha?
@@ -45,7 +58,7 @@ export default function Login() {
                 </TouchableOpacity>
 
                 <View>
-                    <TouchableOpacity onPress={Jogos} style={styles.button}><Text style={styles.buttonText}>Entrar
+                    <TouchableOpacity onPress={logar} style={styles.button}><Text style={styles.buttonText}>Entrar
                     </Text></TouchableOpacity>
                 </View>
 
@@ -57,7 +70,6 @@ export default function Login() {
                 </View>
 
             </View>
-
         </KeyboardAvoidingView >
     );
 }
@@ -75,7 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#2F2F42',
         height: "100%",
         color: "white",
-        
+
     },
     container: {
         backgroundColor: '#1F1F39',
@@ -120,7 +132,17 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 10,
         marginLeft: 60,
-    }
-
-
+    },
+    input: {
+        marginLeft: 10,
+        width: 350,
+        height: 40,
+        fontSize: 16,
+        alignContent: "center",
+        borderRadius: 10,
+        backgroundColor: '#3E3E55',
+        placeholderTextColor: '#fff',
+        color: '#fff',
+        padding: 5,
+    },
 });

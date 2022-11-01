@@ -1,6 +1,6 @@
 
 import React from "react";
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -17,8 +17,14 @@ export default function ArrowHome() {
     return (
         <View>
             <TouchableOpacity onPress={irHome}>
-                <Icon name="arrowleft" size={32} color="#fff" />
+                <Icon name="logout" size={32} style={styles.icone} color="#fff" />
             </TouchableOpacity>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    icone: {
+        textAlign: 'right',
+    },
+});

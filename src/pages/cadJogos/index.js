@@ -4,15 +4,30 @@ import { useNavigation } from "@react-navigation/native";
 import BotaoAzul from "../../components/botao"
 import ArrowHome from '../../components/arrowHome';
 import InputGl from "../../components/inputGl";
+import { useState } from 'react';
+import { TextInput } from 'react-native-gesture-handler';
 
 
 export default function CadastroJogos() {
 
+    const [nomeGame, setNomeGame] = useState('');
+    const [data, setData] = useState('');
+    const [valor, setValor] = useState('');
+    const [genero, setGenero] = useState('');
+    const [distribuidora, setDistribuidora] = useState('');
+    const [duracao, setDuracao] = useState('');
 
     const navigation = useNavigation();
 
-    function Jogos() {
-        navigation.navigate("Jogos ");
+    const jogos = async () => {
+        await firebase.database().ref('jogos').set({
+            nomeJogo: nomeGame,
+            data: data,
+            valor: valor,
+            genero: genero,
+            distribuidora: distribuidora,
+            duracao: duracao,
+        });
     }
 
     return (
@@ -25,19 +40,37 @@ export default function CadastroJogos() {
             <ScrollView style={styles.txtinputs}>
 
                 <Text style={styles.texto}>Nome do Game:</Text>
-                <InputGl />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(nome) => setNomeGame(nome)}
+                    value={nomeGame} />
                 <Text style={styles.texto}>Data da Aquisição:</Text>
-                <InputGl plc="_ / _ / _ /" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(data) => setData(data)}
+                    value={data} />
                 <Text style={styles.texto}>Valor:</Text>
-                <InputGl plc="R$0,00" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(valo) => setValor(valo)}
+                    value={valor} />
                 <Text style={styles.texto}>Gênero:</Text>
-                <InputGl plc="Descrição" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(gene) => setGenero(gene)}
+                    value={genero} />
                 <Text style={styles.texto}>Distribuidora::</Text>
-                <InputGl plc="Descrição" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(dist) => setDistribuidora(dist)}
+                    value={distribuidora} />
                 <Text style={styles.texto}>Duração do Game::</Text>
-                <InputGl plc="0h0min" />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(dur) => setDuracao(dur)}
+                    value={duracao} />
 
-                <BotaoAzul disc="Cadastrar jogo" onPress={Jogos} />
+                <BotaoAzul disc="Cadastrar jogo" press={jogos} />
 
             </ScrollView>
         </KeyboardAvoidingView>
@@ -78,6 +111,17 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: "center",
-    }
-
+    },
+    input: {
+        marginLeft: 10,
+        width: 350,
+        height: 40,
+        fontSize: 16,
+        alignContent: "center",
+        borderRadius: 10,
+        backgroundColor: '#3E3E55',
+        placeholderTextColor: '#fff',
+        color: '#fff',
+        padding: 5,
+    },
 });

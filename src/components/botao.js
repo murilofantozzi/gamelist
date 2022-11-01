@@ -1,18 +1,16 @@
 
 import React from "react";
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
-export default function Botao(props) {
+export default function Botao({ disc, press }) {
     return (
-        <View>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>
-                    {props.disc}
-                </Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.button} onPress={press}>
+            <Text style={styles.buttonText}>
+                {disc}
+            </Text>
+        </TouchableOpacity>
     );
 }
 
@@ -30,6 +28,4 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "#FFF",
     },
-
-
 });
