@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import ArrowHome from '../../components/arrowHome';
@@ -8,14 +8,27 @@ import firebase from '../../firebaseConfig';
 import MaskInput, { createNumberMask, Masks } from 'react-native-mask-input';
 
 
-export default function CadastroJogos() {
-
+export default function CadastroJogos(jogo) {
     const [nomeGame, setNomeGame] = useState('');
     const [data, setData] = useState('');
     const [valor, setValor] = useState('');
     const [genero, setGenero] = useState('');
     const [distribuidora, setDistribuidora] = useState('');
     const [duracao, setDuracao] = useState('');
+    
+    useEffect(() => {
+        if(jogo && jogo.route.params){
+            setNomeGame(jogo.route.params.jogo.nomeJogo);
+            setData(jogo.route.params.jogo.data);
+            setValor(jogo.route.params.jogo.valor);
+            setGenero(jogo.route.params.jogo.genero);
+            setDistribuidora(jogo.route.params.jogo.distribuidora);
+            setDuracao(jogo.route.params.jogo.duracao);
+        }else{
+            console.log("cadastro");
+        }
+
+    });
 
     const cadastrarjogos = async () => {
         try {

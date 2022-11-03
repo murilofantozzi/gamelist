@@ -1,17 +1,22 @@
 
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import InputGl from "../../components/inputGl";
 import Card from "../../components/card";
+import InputGl from "../../components/inputGl";
 import firebase from '../../firebaseConfig';
 
 export default function Jogos() {
-
+    const navigation = useNavigation();
     const [jogos, setJogos] = useState([]);
 
+    const editar = (jogo) => {
+        navigation.navigate("Cadastro ", { jogo });
+    }
+
     useEffect(() => {
-        async function getJogos(){
+        async function getJogos() {
             await firebase.database().ref('jogos').on('value', (snapshot) => {
                 setJogos([]);
                 snapshot.forEach((jogo) => {
@@ -21,7 +26,8 @@ export default function Jogos() {
                         distribuidora: jogo.val().distribuidora,
                         valor: jogo.val().valor,
                         duracao: jogo.val().duracao,
-                        genero: jogo.val().genero
+                        genero: jogo.val().genero,
+                        data: jogo.val().data,
                     };
                     setJogos(old => [...old, data]);
                 })
@@ -42,10 +48,13 @@ export default function Jogos() {
                 <TouchableOpacity><Text style={styles.itemcarrossel}>Novos</Text></TouchableOpacity>
             </View>
             <View>
-                <FlatList data={jogos} keyExtractor={(item) => item.key} renderItem={({item}) => <Card data={item}/>} />
+                <FlatList data={jogos}
+                    keyExtractor={(item) => item.key}
+                    renderItem={({ item }) => <Card
+                        data={item}
+                        press={editar} />
+                    } />
             </View>
-
-
         </View>
     );
 }
@@ -58,13 +67,11 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
         marginTop: "3%"
     },
-
     container: {
         backgroundColor: '#1F1F39',
         width: "100%",
         height: "100%",
     },
-
     carrosel: {
         flexDirection: 'row',
         marginBottom: 20,
@@ -73,7 +80,7 @@ const styles = StyleSheet.create({
     itemcarrossel: {
         backgroundColor: '#858597',
         borderRadius: 30,
-        // marginLeft: 20,
+        marginLeft: 20,
         padding: 5,
         color: '#fff',
     },
@@ -83,5 +90,10 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         padding: 5,
         color: '#fff',
+    },
+    floatingButton: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
     },
 });

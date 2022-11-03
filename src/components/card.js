@@ -1,11 +1,12 @@
 
 import React from "react";
 import { Text, StyleSheet, View, Image } from 'react-native';
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
-export default function Card({data}) {
+export default function Card({ data, press }) {
     return (
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => press(data)}>
             <Image source={require('../assets/nfsu2.jpg')}
                 style={styles.imagem}
             />
@@ -16,7 +17,7 @@ export default function Card({data}) {
                 <Text style={styles.descJogo}>{data.duracao}</Text>
                 <Text style={styles.descJogo}>{data.genero}</Text>
             </View>
-        </View >
+        </TouchableOpacity>
     );
 }
 

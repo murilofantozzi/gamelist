@@ -9,7 +9,6 @@ import BotaoAzul from "../../components/botao";
 import firebase from '../../firebaseConfig';
 
 export default function Cadastro() {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -34,7 +33,7 @@ export default function Cadastro() {
             });
             navigation.navigate("Jogos");
         }).catch((error) => {
-            alert("aa");
+            alert(error);
         });
     }
 
