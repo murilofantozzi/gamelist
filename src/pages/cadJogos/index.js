@@ -5,6 +5,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import ArrowHome from '../../components/arrowHome';
 import BotaoAzul from "../../components/botao";
 import firebase from '../../firebaseConfig';
+import MaskInput, { createNumberMask, Masks } from 'react-native-mask-input';
 
 
 export default function CadastroJogos() {
@@ -45,6 +46,13 @@ export default function CadastroJogos() {
         }
     }
 
+    const moneyMask = createNumberMask({
+        prefix: ['R', '$', ' '],
+        delimiter: '.',
+        separator: ',',
+        precision: 2,
+    })
+
     return (
         <KeyboardAvoidingView style={styles.container}>
             <ArrowHome />
@@ -57,15 +65,19 @@ export default function CadastroJogos() {
                     onChangeText={(nome) => setNomeGame(nome)}
                     value={nomeGame} />
                 <Text style={styles.texto}>Data da Aquisição:</Text>
-                <TextInput
+                <MaskInput
                     style={styles.input}
                     onChangeText={(data) => setData(data)}
-                    value={data} />
+                    value={data}
+                    mask= {Masks.DATE_DDMMYYYY}
+                    />
                 <Text style={styles.texto}>Valor:</Text>
-                <TextInput
+                <MaskInput
                     style={styles.input}
-                    onChangeText={(valo) => setValor(valo)}
-                    value={valor} />
+                    onChangeText={(masked, unmasked) => setValor(masked)}
+                    value={valor}
+                    mask={moneyMask}
+                />
                 <Text style={styles.texto}>Gênero:</Text>
                 <TextInput
                     style={styles.input}
