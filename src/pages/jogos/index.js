@@ -77,14 +77,11 @@ const styles = StyleSheet.create({
         padding: 5,
         color: '#fff',
     },
-
     itemcarrossel1: {
         backgroundColor: '#3D5CFF',
         borderRadius: 30,
         marginLeft: 30,
         padding: 5,
         color: '#fff',
-    }
-
-
+    },
 });

@@ -1,5 +1,4 @@
 
-import { useNavigation } from "@react-navigation/native";
 import { useState } from 'react';
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -19,10 +18,10 @@ export default function CadastroJogos() {
 
     const cadastrarjogos = async () => {
         try {
-            if(nomeGame !== ''){
+            if (nomeGame !== '') {
                 let jogoRef = await firebase.database().ref('jogos');
                 let key = jogoRef.push().key;
-        
+
                 jogoRef.child(key).set({
                     nomeJogo: nomeGame,
                     data: data,
@@ -98,14 +97,12 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
         marginTop: "3%"
     },
-
     container: {
         backgroundColor: '#1F1F39',
         width: "100%",
         height: "100%",
 
     },
-
     txtinputs: {
         alignContent: "center",
         backgroundColor: '#2F2F42',

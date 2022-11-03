@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#2F2F42',
         flexDirection: 'row',
     },
-
     imagem: {
         backgroundColor: '#fff',
         marginLeft: 10,
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
         height: 73,
 
     },
-
     descJogo: {
         color: '#fff',
         marginLeft: 10,
