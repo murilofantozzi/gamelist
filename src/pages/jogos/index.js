@@ -1,26 +1,48 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import InputGl from "../../components/inputGl";
 import Card from "../../components/card";
+import firebase from '../../firebaseConfig';
 
 export default function Jogos() {
+
+    const [jogos, setJogos] = useState([]);
+
+    useEffect(() => {
+        async function getJogos(){
+            await firebase.database().ref('jogos').on('value', (snapshot) => {
+                setJogos([]);
+                snapshot.forEach((jogo) => {
+                    let data = {
+                        key: jogo.key,
+                        nomeJogo: jogo.val().nomeJogo,
+                        distribuidora: jogo.val().distribuidora,
+                        valor: jogo.val().valor,
+                        duracao: jogo.val().duracao,
+                        genero: jogo.val().genero
+                    };
+                    setJogos(old => [...old, data]);
+                })
+            });
+        }
+
+        getJogos();
+    }, []);
+
     return (
         <View style={styles.container}>
             <Text style={styles.title} >Estante de Jogos</Text>
             <InputGl plc={"Procure seu jogo"}>
             </InputGl>
-            <Text style={styles.title}>Jogos cadastrados:</Text>
             <View style={styles.carrosel}>
                 <TouchableOpacity><Text style={styles.itemcarrossel1}>Todos</Text></TouchableOpacity>
                 <TouchableOpacity><Text style={styles.itemcarrossel}>Populares</Text></TouchableOpacity>
                 <TouchableOpacity><Text style={styles.itemcarrossel}>Novos</Text></TouchableOpacity>
             </View>
             <View>
-                <Card />
-                <Card />
-                <Card />
+                <FlatList data={jogos} keyExtractor={(item) => item.key} renderItem={({item}) => <Card data={item}/>} />
             </View>
 
 
@@ -46,11 +68,12 @@ const styles = StyleSheet.create({
     carrosel: {
         flexDirection: 'row',
         marginBottom: 20,
+        marginTop: "3%"
     },
     itemcarrossel: {
         backgroundColor: '#858597',
         borderRadius: 30,
-        marginLeft: 20,
+        // marginLeft: 20,
         padding: 5,
         color: '#fff',
     },

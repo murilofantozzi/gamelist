@@ -5,6 +5,7 @@ import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native
 import { TextInput } from 'react-native-gesture-handler';
 import ArrowHome from '../../components/arrowHome';
 import BotaoAzul from "../../components/botao";
+import firebase from '../../firebaseConfig';
 
 
 export default function CadastroJogos() {
@@ -17,28 +18,32 @@ export default function CadastroJogos() {
     const [duracao, setDuracao] = useState('');
 
     const cadastrarjogos = async () => {
-        if(nomeGame !== ''){
-            let jogoRef = await firebase.database().ref('jogos');
-            let key = jogoRef.push().key;
-    
-            jogoRef.child(key).set({
-                nomeJogo: nomeGame,
-                data: data,
-                valor: valor,
-                genero: genero,
-                distribuidora: distribuidora,
-                duracao: duracao,
-            });
-            alert("Cadastrado com sucesso!");
-            setNomeGame('');
-            setData('');
-            setValor('');
-            setGenero('');
-            setDistribuidora('');
-            setDuracao('');
-            return;
+        try {
+            if(nomeGame !== ''){
+                let jogoRef = await firebase.database().ref('jogos');
+                let key = jogoRef.push().key;
+        
+                jogoRef.child(key).set({
+                    nomeJogo: nomeGame,
+                    data: data,
+                    valor: valor,
+                    genero: genero,
+                    distribuidora: distribuidora,
+                    duracao: duracao,
+                });
+                alert("Cadastrado com sucesso!");
+                setNomeGame('');
+                setData('');
+                setValor('');
+                setGenero('');
+                setDistribuidora('');
+                setDuracao('');
+                return;
+            }
+            alert("Nome obrigatório");
+        } catch (error) {
+            return error;
         }
-        alert("Nome obrigatório");
     }
 
     return (

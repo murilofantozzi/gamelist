@@ -3,18 +3,18 @@ import React from "react";
 import { Text, StyleSheet, View, Image } from 'react-native';
 
 
-export default function Card(props) {
+export default function Card({data}) {
     return (
         <View style={styles.card}>
             <Image source={require('../assets/nfsu2.jpg')}
                 style={styles.imagem}
             />
             <View style={styles.descJogo}>
-                <Text style={styles.descJogo}>Nome do Jogo</Text>
-                <Text style={styles.descJogo}>Autor do Jogo</Text>
-                <Text style={styles.descJogo}>Valor</Text>
-                <Text style={styles.descJogo}>Tempo</Text>
-                <Text style={styles.descJogo}>Genero</Text>
+                <Text style={styles.descJogo}>{data.nomeJogo}</Text>
+                <Text style={styles.descJogo}>{data.distribuidora}</Text>
+                <Text style={styles.descJogo}>{data.valor}</Text>
+                <Text style={styles.descJogo}>{data.duracao}</Text>
+                <Text style={styles.descJogo}>{data.genero}</Text>
             </View>
         </View >
     );
