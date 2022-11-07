@@ -15,16 +15,23 @@ export default function CadastroJogos(jogo) {
     const [genero, setGenero] = useState('');
     const [distribuidora, setDistribuidora] = useState('');
     const [duracao, setDuracao] = useState('');
-    
+
     useEffect(() => {
-        if(jogo && jogo.route.params){
+        setNomeGame('');
+        setData('');
+        setValor('');
+        setGenero('');
+        setDistribuidora('');
+        setDuracao('');
+
+        if (jogo && jogo.route.params) {
             setNomeGame(jogo.route.params.jogo.nomeJogo);
             setData(jogo.route.params.jogo.data);
             setValor(jogo.route.params.jogo.valor);
             setGenero(jogo.route.params.jogo.genero);
             setDistribuidora(jogo.route.params.jogo.distribuidora);
             setDuracao(jogo.route.params.jogo.duracao);
-        }else{
+        } else {
             console.log("cadastro");
         }
 
@@ -82,8 +89,8 @@ export default function CadastroJogos(jogo) {
                     style={styles.input}
                     onChangeText={(data) => setData(data)}
                     value={data}
-                    mask= {Masks.DATE_DDMMYYYY}
-                    />
+                    mask={Masks.DATE_DDMMYYYY}
+                />
                 <Text style={styles.texto}>Valor:</Text>
                 <MaskInput
                     style={styles.input}
